@@ -1,0 +1,18 @@
+.footer {
+  display: flex;
+  background-color: beige;
+  padding: 10px 30px;
+  margin-top: 5%;
+  height: 50px;
+  text-align: center;
+}
+
+.logo {
+  width: 20%;
+  text-align: center;
+}
+
+.descriptionFooter {
+  margin-top: 1.5%;
+  margin-left: 7%;
+}
