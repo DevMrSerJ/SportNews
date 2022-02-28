@@ -1,0 +1,10 @@
+.content {
+  margin-top: 3%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.main {
+  width: 90%;
+  margin: 0 auto;
+}

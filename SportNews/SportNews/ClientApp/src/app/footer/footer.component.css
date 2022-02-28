@@ -1,10 +1,12 @@
 .footer {
+  height: 50px;
+  width: 100%;
   display: flex;
   background-color: beige;
-  padding: 10px 30px;
   margin-top: 5%;
-  height: 50px;
   text-align: center;
+  position: relative;
+  bottom: 0;
 }
 
 .logo {
@@ -15,4 +17,8 @@
 .descriptionFooter {
   margin-top: 1.5%;
   margin-left: 7%;
+}
+
+.logo-img {
+  width: 16%;
 }

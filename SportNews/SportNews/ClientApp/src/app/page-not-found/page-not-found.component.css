@@ -1,0 +1,12 @@
+.main {
+  width: 90%;
+  height: 350px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.not-found {
+  margin-top: 10%;
+  font-size: 30px;
+  text-align: center;
+}
