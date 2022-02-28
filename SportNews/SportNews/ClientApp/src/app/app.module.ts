@@ -6,6 +6,7 @@ import { NavigationComponent } from './navigation/navigation.component';
 import { PageArticleComponent } from './page-article/page-article.component';
 import { ClubsStatisticsComponent } from './clubs-statistics/clubs-statistics.component';
 import { CardArticleComponent } from './card-article/card-article.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -13,7 +14,8 @@ import { CardArticleComponent } from './card-article/card-article.component';
     NavigationComponent,
     PageArticleComponent,
     ClubsStatisticsComponent,
-    CardArticleComponent
+    CardArticleComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule

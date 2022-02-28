@@ -1,1 +1,17 @@
-<p>card-article works!</p>
+<div class="arcticles">
+  <div class="article" *ngFor="let card of articles">
+    <h1 class="headArticle">
+      <a href="article.html">
+        {{ card?.header }}
+      </a>
+    </h1>
+    <p class="bodyArticle">
+      {{ card?.shortText }}
+    </p>
+    <div class="description">
+      <span>{{ card?.sport }}</span>
+      <span class="descriptionArticle">{{ card?.date }}</span>
+      <span class="descriptionArticle">{{ card?.author }}</span>
+    </div>
+  </div>
+</div>

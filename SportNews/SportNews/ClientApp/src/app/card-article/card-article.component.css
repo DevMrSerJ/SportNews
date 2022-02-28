@@ -1,0 +1,38 @@
+a {
+  text-decoration: none;
+  color: #272727;
+}
+
+a:hover {
+  color: #3d69a7;
+}
+
+.article {
+  border: 1px solid black;
+  margin-top: 4%;
+  width: 800px;
+  height: 250px;
+}
+
+.headArticle {
+  margin-top: 2%;
+  margin-left: 2%;
+}
+
+.bodyArticle {
+  margin-top: 3%;
+  margin-left: 2%;
+}
+
+.description {
+  margin-top: 5%;
+  margin-left: 2%;
+  color: #909090;
+  display: flex;
+  align-items: flex-end;
+}
+
+.descriptionArticle {
+  margin-top: 2%;
+  margin-left: 10%;
+}
