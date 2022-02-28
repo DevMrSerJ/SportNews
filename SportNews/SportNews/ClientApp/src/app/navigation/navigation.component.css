@@ -1,0 +1,66 @@
+a {
+  text-decoration: none;
+  color: #272727;
+}
+
+a:hover {
+  color: #3d69a7;
+}
+
+.navigationMenu {
+  position: fixed;
+  top: 0px;
+  left: 5%;
+  width: 90%;
+}
+
+.logo {
+  width: 20%;
+  text-align: center;
+}
+
+.navigate-logo {
+  display: flex;
+  background-color: beige;
+  padding: 10px 30px;
+}
+
+.navigate {
+  width: 80%;
+  display: flex;
+  justify-content: space-around;
+}
+.element-nav {
+  display: flex;
+  align-items: center;
+}
+
+.text-element-nav {
+  padding: 5px 30px;
+  background-color: #a84c0a;
+  color: #ffffff;
+  box-shadow: 0px 0px 5px 1px #daa666;
+  cursor: pointer;
+  transition: 0.6s;
+  border-radius: 10px;
+}
+
+.text-element-nav:hover, .active {
+  transition: 0.6s;
+  background-color: #a84c0ab8;
+}
+
+.filters {
+  margin-top: 7%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.filterDate, .author {
+  margin-left: 2%;
+}
+
+.filter {
+  width: 30%;
+  text-align: center;
+}
