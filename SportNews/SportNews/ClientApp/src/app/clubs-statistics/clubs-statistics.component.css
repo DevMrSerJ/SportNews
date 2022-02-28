@@ -1,0 +1,19 @@
+a {
+  text-decoration: none;
+  color: #272727;
+}
+
+  a:hover {
+    color: #3d69a7;
+  }
+
+.descriptionTable {
+  margin-bottom: 4%;
+}
+
+.statistic {
+  margin-top: 10%;
+  display: flex;
+  justify-content: space-between;
+  width: 450px;
+}

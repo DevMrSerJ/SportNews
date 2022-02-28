@@ -1,0 +1,18 @@
+<div class="statistic">
+  <table border="1" cellspacing="0">
+    <caption class="descriptionTable">ТИНЬКОФФ РОССИЙСКАЯ ПРЕМЬЕР-ЛИГА 2021-22</caption>
+    <tr>
+      <th>Позиция</th>
+      <th>Команда</th>
+      <th>Очки</th>
+    </tr>
+    <tr>
+    <tr *ngFor="let card of teams">
+      <td>{{ card?.position }}</td>
+      <td>
+        <a href="/SportNews">{{ card?.name }}</a>
+      </td>
+      <td>{{ card?.score }}</td>
+    </tr>
+  </table>
+</div>
