@@ -1,0 +1,36 @@
+.articleAuthorBlock {
+  width: 800px;
+  height: 200px;
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.mainPhotoAuthor {
+  width: 200px;
+  height: 150px;
+  margin-left: 5%;
+  margin-top: 15%;
+}
+
+.textArticle {
+  margin-left: 3%;
+  margin-top: 2%;
+  font-size: 14pt;
+}
+
+.headArticle {
+  margin-top: 2%;
+  margin-left: 2%;
+}
+
+.bodyArticle {
+  margin-top: 3%;
+  margin-left: 2%;
+}
+
+.concreteArticle {
+  margin-top: 4%;
+  width: 800px;
+  height: 100%;
+}
+

@@ -17,6 +17,7 @@ import { ClubsStatisticsComponent } from './clubs-statistics/clubs-statistics.co
 import { CardArticleComponent } from './card-article/card-article.component';
 
 import { FooterComponent } from './footer/footer.component';
+import { AboutClubComponent } from './about-club/about-club.component';
 
 const appRoutes: Routes = [
   { path: '', component: PageMainComponent },
@@ -38,7 +39,8 @@ const appRoutes: Routes = [
     PageMainComponent,
     PageAuthorizationComponent,
     FiltersComponent,
-    PageClubComponent
+    PageClubComponent,
+    AboutClubComponent
   ],
   imports: [
     BrowserModule,
