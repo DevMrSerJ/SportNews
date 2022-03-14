@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace SportNews.Controllers
 {
 	/// <summary>
-	/// контроллер для работы с таблицей статей.
+	/// Controller for work table article.
 	/// </summary>
 	[ApiController]
 	[Route("api/[controller]")]
@@ -33,7 +33,7 @@ namespace SportNews.Controllers
 									Id = article.Id,
 									Header = article.Header,
 									ShortText = article.ShortText,
-									Author = user.Surname + user.Name[0] + user.Patronymic[0],
+									Author = $"{user.Surname} {user.Name[0]}. {user.Patronymic[0]}.",
 									DatePublish = article.DatePublish,
 									Sport = sport.Name
 								 }).ToList();
@@ -70,7 +70,7 @@ namespace SportNews.Controllers
 									 ShortText = article.ShortText,
 									 Text = article.Text,
 									 ImageUrl = article.ImageUrl,
-									 Author = user.Surname + user.Name[0] + user.Patronymic[0],
+									 Author = $"{user.Surname} {user.Name[0]}. {user.Patronymic[0]}.",
 									 DatePublish = article.DatePublish,
 									 Sport = sport.Name
 								 }).ToList();
@@ -107,7 +107,7 @@ namespace SportNews.Controllers
 									 ShortText = article.ShortText,
 									 Text = article.Text,
 									 ImageUrl = article.ImageUrl,
-									 Author = user.Surname + user.Name[0] + user.Patronymic[0],
+									 Author = $"{user.Surname} {user.Name[0]}. {user.Patronymic[0]}.",
 									 DatePublish = article.DatePublish,
 									 Sport = sport.Name
 								 }).ToList();
