@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PageAuthorizationComponent } from './page-authorization.component';
+import { PageClubComponent } from './page-club.component';
 
-describe('PageAuthorizationComponent', () => {
-  let component: PageAuthorizationComponent;
-  let fixture: ComponentFixture<PageAuthorizationComponent>;
+describe('PageClubComponent', () => {
+  let component: PageClubComponent;
+  let fixture: ComponentFixture<PageClubComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PageAuthorizationComponent ]
+      declarations: [ PageClubComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PageAuthorizationComponent);
+    fixture = TestBed.createComponent(PageClubComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

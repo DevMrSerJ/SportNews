@@ -49,18 +49,3 @@ a:hover {
   transition: 0.6s;
   background-color: #a84c0ab8;
 }
-
-.filters {
-  margin-top: 7%;
-  display: flex;
-  justify-content: space-around;
-}
-
-.filterDate, .author {
-  margin-left: 2%;
-}
-
-.filter {
-  width: 30%;
-  text-align: center;
-}

@@ -1,0 +1,54 @@
+.main {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.auth {
+  margin-left: 40%;
+  margin-top: 2%;
+}
+
+.authenticationBlock {
+  height: 700px;
+  padding-top: 8%;
+}
+
+.registLabel {
+  margin-left: 44%;
+  font-weight: bold;
+}
+
+.registImg {
+  margin-left: 46%;
+  margin-top: 2%;
+}
+
+.buttonRegistr {
+  margin-left: 8%;
+  margin-top: 2%;
+}
+
+.lineInput {
+  margin-top: 2%;
+}
+
+.descriptionLabel {
+  font-size: 10pt;
+  color: rgba(22, 120, 0, 0.99);
+}
+
+.authImg {
+  margin-left: 46%;
+  margin-top: 2%;
+}
+
+.authLabel {
+  margin-left: 44%;
+  font-weight: bold;
+}
+
+.buttonAuth {
+  margin-left: 4%;
+  margin-top: 1%;
+  width: 150px;
+}

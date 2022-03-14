@@ -1,1 +1,85 @@
-<p>page-authorization works!</p>
+<app-navigation></app-navigation>
+
+<main class="main">
+  <div class="authenticationBlock">
+    <div *ngIf="true">
+      <p class="registLabel">РЕГИСТРАЦИЯ</p>
+      <img src="../../assets/images/favicon.png" class="registImg">
+
+      <form id="FormRegist" class="auth">
+        <p>
+          <label>Логин:</label>
+          <input id="login" required type="text" name="username" class="placeholder" placeholder="admin">
+        </p>
+        <p id="descLog1" class="descriptionLabel">
+          В логине могут быть только латинские буквы и цифры.
+        </p>
+        <p id="descLog2" class="descriptionLabel">
+          Длина логина не менее 6 символов.
+        </p>
+        <p class="lineInput">
+          <label>Пароль:</label>
+          <input id="passFirst" type="password" required name="password" class="placeholder">
+        </p>
+        <p id="descPass1" class="descriptionLabel">
+          Длина пароля не менее 6 символов.
+        </p>
+        <p id="descPass2" class="descriptionLabel">
+          В пароле должны быть цифры, буквы нижнего и верхнего регистра и спец символы.
+        </p>
+        <p class="lineInput">
+          <label>Повторите пароль:</label>
+          <input id="passSecond" type="password" required name="password" class="placeholder">
+        </p>
+
+        <p id="descPass" class="descriptionLabel">
+          Пароли должны совпадать.
+        </p>
+        <p class="lineInput">
+          <label>Выберите пол:</label>
+          <input type="radio" name="password" class="placeholder">МУЖ
+          <input type="radio" name="password" class="placeholder">ЖЕН
+        </p>
+        <p class="lineInput">
+          <label>Введите телефон:</label>
+          <input id="mobile" type="text" required name="password" class="placeholder" placeholder="+79112223333">
+        </p>
+        <p id="descMobile" class="descriptionLabel">
+          Телефон должен быть в формате +7000000000.
+        </p>
+        <p class="lineInput">
+          <label>Введите email:</label>
+          <input id="email" type="text" required name="password" class="placeholder" placeholder="admin@example.com">
+        </p>
+        <p class="lineInput">
+          <label id="labelCaptcha">Сколько будет </label>
+          <input id="captchaValue" type="number" required name="password" class="placeholder">
+        </p>
+        <p class="lineInput">
+          <button class="buttonRegistr" onclick="onRegist(); return false;">ЗАРЕГИСТРИРОВАТЬСЯ</button>
+        </p>
+      </form>
+    </div>
+
+    <div *ngIf="false">
+      <p class="authLabel">АВТОРИЗАЦИЯ</p>
+      <img src="../../assets/images/favicon.png" class="authImg">
+
+      <form id="FormAuth" class="auth">
+        <p>
+          <label>Логин:</label>
+          <input id="login" required type="text" name="username" class="placeholder" placeholder="admin">
+        </p>
+        <p class="lineInput">
+          <label>Пароль:</label>
+          <input id="passFirst" type="password" required name="password" class="placeholder">
+        </p>
+        <p class="lineInput">
+          <button class="buttonAuth" onclick="onRegist(); return false;">ВОЙТИ</button>
+        </p>
+      </form>
+    </div>
+  </div>
+</main>
+
+<app-footer></app-footer>

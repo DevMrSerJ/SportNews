@@ -1,0 +1,14 @@
+.filters {
+  margin-top: 7%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.filterDate, .author {
+  margin-left: 2%;
+}
+
+.filter {
+  width: 30%;
+  text-align: center;
+}
