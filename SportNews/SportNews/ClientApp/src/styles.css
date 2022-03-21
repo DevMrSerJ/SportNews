@@ -3,3 +3,9 @@
   padding: 0;
   font-family: Tahoma;
 }
+
+.textArticle {
+  margin-left: 3%;
+  margin-top: 2%;
+  font-size: 14pt;
+}

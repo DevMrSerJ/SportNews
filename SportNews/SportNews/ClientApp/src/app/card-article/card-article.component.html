@@ -1,7 +1,7 @@
 <div class="arcticles">
   <div class="article" *ngFor="let card of articles">
     <h1 class="headArticle">
-      <a href="article.html">
+      <a (click)="onClickReferense(card.id)">
         {{ card?.header }}
       </a>
     </h1>

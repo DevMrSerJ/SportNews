@@ -1,0 +1,25 @@
+<app-navigation></app-navigation>
+
+<main class="main">
+  <div class="content">
+
+    <div class="arcticles">
+      <div class="concreteArticle">
+        <h1 class="nameArticle">
+          {{ article?.header }}
+        </h1>
+        <img class="imageArticle" src="{{ article?.image }}" alt="изображение">
+        <div [innerHTML]="article?.text"></div>
+        <div class="description">
+          <span>{{ article?.sport }}</span>
+          <span class="descriptionArticle">{{ article?.date }}</span>
+          <span class="descriptionArticle">{{ article?.author }}</span>
+        </div>
+      </div>
+    </div>
+
+    <app-clubs-statistics></app-clubs-statistics>
+  </div>
+</main>
+
+<app-footer></app-footer>
