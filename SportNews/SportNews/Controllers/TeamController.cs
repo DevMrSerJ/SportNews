@@ -33,8 +33,9 @@ namespace SportNews.Controllers
 								 {
 									 Id = team.Id,
 									 ShortName = team.ShortName,
-									 Position = team.Position,
-									 Score = team.Score
+									 Position = team.CurrentPosition,
+									 Score = team.Score,
+									 Sport = team.TypeSportId
 								 }).ToList();
 
 					return users;
@@ -67,8 +68,9 @@ namespace SportNews.Controllers
 									 ShortName = team.ShortName,
 									 FullName = team.FullName,
 									 Description = team.Description,
-									 Position = team.Position,
-									 Score = team.Score
+									 Position = team.CurrentPosition,
+									 Score = team.Score,
+									 Sport = team.TypeSportId
 								 }).ToList();
 
 					return users;

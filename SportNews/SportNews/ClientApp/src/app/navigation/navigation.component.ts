@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -7,6 +7,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./navigation.component.css']
 })
 export class NavigationComponent implements OnInit {
+
+  @Output() sportClick = new EventEmitter<string[]>();
 
   private activeFootball: string = "";
   private activeBasketball: string = "";
@@ -21,26 +23,40 @@ export class NavigationComponent implements OnInit {
 
   onClickNavigation(name: string): void {
     this.clearActiveStyle();
+    let sport = "";
+    let title = "";
+    let titleUpTable = "";
+    let titleDownTable = "";
 
     switch (name) {
       case "football":
         this.activeFootball = "active";
         this.router.navigate(['']);
+        sport = "футбол";
+        title = "ТИНЬКОФФ РОССИЙСКАЯ ПРЕМЬЕР-ЛИГА 2021-22";
         break;
 
       case "basketball":
         this.activeBasketball = "active";
         this.router.navigate(['']);
+        sport = "баскетбол";
+        title = "БАСКЕТБОЛ. ВТБ. 2021-22";
         break;
 
       case "hockey":
         this.activeHockey = "active";
         this.router.navigate(['']);
+        sport = "хоккей";
+        title = "КХЛ. 2021-22. РЕГУЛЯРНЫЙ ЧЕМПИОНАТ ";
+        titleUpTable = "ЗАПАД";
+        titleDownTable = "ВОСТОК";
         break;
 
       case "authors":
         this.activeAuthors = "active";
         this.router.navigate(['']);
+        sport = "футбол";
+        title = "ТИНЬКОФФ РОССИЙСКАЯ ПРЕМЬЕР-ЛИГА 2021-22";
         break;
 
       case "authorization":
@@ -53,6 +69,10 @@ export class NavigationComponent implements OnInit {
         this.router.navigate(['']);
         break;
     }
+
+    let args = [sport, title, titleUpTable, titleDownTable];
+
+    this.sportClick.emit(args);
   }
 
   clearActiveStyle() {

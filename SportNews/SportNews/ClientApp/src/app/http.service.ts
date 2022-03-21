@@ -12,7 +12,19 @@ export class HttpService {
     return this.http.get("/api/article");
   }
 
+  getSportArticles(typeSport: string) {
+    return this.http.get("/api/article/sport=" + typeSport);
+  }
+
   getConcreateArticle(id: string) {
     return this.http.get("/api/article/" + id);
+  }
+
+  getMainTeams() {
+    return this.http.get("/api/team/sport=футбол");
+  }
+
+  getTeams(sport: string) {
+    return this.http.get("/api/team/sport=" + sport);
   }
 }

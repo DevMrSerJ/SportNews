@@ -1,13 +1,17 @@
-<div class="statistic">
+<div class="statisticHockey">
+
   <table border="1" cellspacing="0">
-    <caption class="descriptionTable">ТИНЬКОФФ РОССИЙСКАЯ ПРЕМЬЕР-ЛИГА 2021-22</caption>
+    <caption class="descriptionTable">
+      {{ title }}
+      <p *ngIf="titleUpTable">{{ titleUpTable }}</p>
+    </caption>
     <tr>
       <th>Позиция</th>
       <th>Команда</th>
       <th>Очки</th>
     </tr>
     <tr>
-    <tr *ngFor="let card of teams">
+    <tr *ngFor="let card of teamsUp">
       <td>{{ card?.position }}</td>
       <td>
         <a href="/club">{{ card?.name }}</a>
@@ -15,4 +19,27 @@
       <td>{{ card?.score }}</td>
     </tr>
   </table>
+
+  <br>
+  <br>
+
+  <table *ngIf="titleDownTable" border="1" cellspacing="0">
+    <caption class="descriptionTable">
+      {{ titleDownTable }}
+    </caption>
+    <tr>
+      <th>Позиция</th>
+      <th>Команда</th>
+      <th>Очки</th>
+    </tr>
+    <tr>
+    <tr *ngFor="let card of teamsDown">
+      <td>{{ card?.position }}</td>
+      <td>
+        <a href="/club">{{ card?.name }}</a>
+      </td>
+      <td>{{ card?.score }}</td>
+    </tr>
+  </table>
+
 </div>

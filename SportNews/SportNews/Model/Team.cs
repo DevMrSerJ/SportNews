@@ -38,7 +38,7 @@ namespace SportNews.Model
 		/// <summary>
 		/// Current position in championship.
 		/// </summary>
-		public int Position { get; set; }
+		public int CurrentPosition { get; set; }
 
 		/// <summary>
 		/// Current count score.

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 export interface Team {
   id: string;
@@ -18,49 +18,24 @@ export interface Team {
 
 export class ClubsStatisticsComponent implements OnInit {
 
-  public teams: Team[] = [];
-  
+  @Input()
+  public teamsUp: Team[] = [];
+
+  @Input()
+  public teamsDown: Team[] = [];
+
+  @Input()
+  public title: string = "";
+
+  @Input()
+  public titleUpTable: string = "";
+
+  @Input()
+  public titleDownTable: string = "";
+
   constructor() { }
 
   ngOnInit(): void {
-    this.teams.push(
-      {
-        id: "",
-        image: "",
-        name: "ЦСКА",
-        fullName: "",
-        description: "",
-        position: 4,
-        score: 35
-      },
-      {
-        id: "",
-        image: "",
-        name: "Зенит",
-        fullName: "",
-        description: "",
-        position: 1,
-        score: 43
-      },
-      {
-        id: "",
-        image: "",
-        name: "Динамо",
-        fullName: "",
-        description: "",
-        position: 2,
-        score: 40
-      },
-      {
-        id: "",
-        image: "",
-        name: "Сочи",
-        fullName: "",
-        description: "",
-        position: 3,
-        score: 39
-      }
-    );
   }
 
 }
