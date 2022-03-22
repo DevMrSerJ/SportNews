@@ -20,6 +20,7 @@ export interface Article {
 export class CardArticleComponent implements OnInit {
 
   @Input() public articles: Article[] = [];
+  @Input() public author: boolean = false;
 
   constructor(private router: Router) { }
 

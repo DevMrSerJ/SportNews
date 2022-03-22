@@ -1,17 +1,38 @@
 <div class="arcticles">
-  <div class="article" *ngFor="let card of articles">
-    <h1 class="headArticle">
-      <a (click)="onClickReferense(card.id)">
-        {{ card?.header }}
-      </a>
-    </h1>
-    <p class="bodyArticle">
-      {{ card?.shortText }}
-    </p>
-    <div class="description">
-      <span>{{ card?.sport }}</span>
-      <span class="descriptionArticle">{{ card?.date }}</span>
-      <span class="descriptionArticle">{{ card?.author }}</span>
+  <div *ngIf="!author">
+    <div class="article" *ngFor="let card of articles">
+      <h1 class="headArticle">
+        <a (click)="onClickReferense(card.id)">
+          {{ card?.header }}
+        </a>
+      </h1>
+      <p class="bodyArticle">
+        {{ card?.shortText }}
+      </p>
+      <div class="description">
+        <span>{{ card?.sport }}</span>
+        <span class="descriptionArticle">{{ card?.date }}</span>
+        <span class="descriptionArticle">{{ card?.author }}</span>
+      </div>
     </div>
   </div>
+
+  <div *ngIf="author">
+    <div class="articleAuthor" *ngFor="let card of articles">
+      <div class="imageAuthor">
+        <img src="{{ card?.image }}" class="mainPhotoAuthor">
+      </div>
+      <div class="textArticle">
+        <h1 class="headArticle">
+          <a (click)="onClickReferense(card.id)">
+            {{ card?.header }}
+          </a>
+        </h1>
+        <p class="bodyArticle">
+          {{ card?.shortText }}
+        </p>
+      </div>
+    </div>
+  </div>
+
 </div>

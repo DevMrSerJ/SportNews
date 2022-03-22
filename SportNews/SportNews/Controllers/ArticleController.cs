@@ -25,7 +25,7 @@ namespace SportNews.Controllers
 			{
 				using (SportNewsContext db = new SportNewsContext())
 				{
-					var users = (from article in db.Article
+					var articles = (from article in db.Article
 								 join user in db.User on article.AuthorId equals user.Id
 								 join sport in db.TypeSport on article.TypeSportId equals sport.Id
 								 select new 
@@ -38,7 +38,7 @@ namespace SportNews.Controllers
 									Sport = sport.Name
 								 }).ToList();
 
-					return users;
+					return articles;
 				}
 			}
 			catch (Exception ex)
@@ -59,7 +59,7 @@ namespace SportNews.Controllers
 			{
 				using (SportNewsContext db = new SportNewsContext())
 				{
-					var users = (from article in db.Article
+					var articles = (from article in db.Article
 								 join user in db.User on article.AuthorId equals user.Id
 								 join sport in db.TypeSport on article.TypeSportId equals sport.Id
 								 where article.Id == id
@@ -75,7 +75,7 @@ namespace SportNews.Controllers
 									 Sport = sport.Name
 								 }).ToList();
 
-					return users;
+					return articles;
 				}
 			}
 			catch (Exception ex)
@@ -96,7 +96,7 @@ namespace SportNews.Controllers
 			{
 				using (SportNewsContext db = new SportNewsContext())
 				{
-					var users = (from article in db.Article
+					var articles = (from article in db.Article
 								 join user in db.User on article.AuthorId equals user.Id
 								 join sport in db.TypeSport on article.TypeSportId equals sport.Id
 								 where sport.Name.ToLower().IndexOf(typeSport.ToLower()) != -1
@@ -112,7 +112,7 @@ namespace SportNews.Controllers
 									 Sport = sport.Name
 								 }).ToList();
 
-					return users;
+					return articles;
 				}
 			}
 			catch (Exception ex)

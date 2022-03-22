@@ -27,4 +27,8 @@ export class HttpService {
   getTeams(sport: string) {
     return this.http.get("/api/team/sport=" + sport);
   }
+
+  getAllAuthors() {
+    return this.http.get("/api/user");
+  }
 }

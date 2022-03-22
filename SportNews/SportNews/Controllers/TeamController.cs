@@ -26,7 +26,7 @@ namespace SportNews.Controllers
 			{
 				using (SportNewsContext db = new SportNewsContext())
 				{
-					var users = (from team in db.Team
+					var teams = (from team in db.Team
 								 join sport in db.TypeSport on team.TypeSportId equals sport.Id
 								 where sport.Name.ToLower().IndexOf(name.ToLower()) != -1
 								 select new
@@ -38,7 +38,7 @@ namespace SportNews.Controllers
 									 Sport = team.TypeSportId
 								 }).ToList();
 
-					return users;
+					return teams;
 				}
 			}
 			catch (Exception ex)
@@ -59,7 +59,7 @@ namespace SportNews.Controllers
 			{
 				using (SportNewsContext db = new SportNewsContext())
 				{
-					var users = (from team in db.Team
+					var teams = (from team in db.Team
 								 where team.Id == id
 								 select new
 								 {
@@ -73,7 +73,7 @@ namespace SportNews.Controllers
 									 Sport = team.TypeSportId
 								 }).ToList();
 
-					return users;
+					return teams;
 				}
 			}
 			catch (Exception ex)

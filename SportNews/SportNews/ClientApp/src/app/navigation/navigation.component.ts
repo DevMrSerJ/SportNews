@@ -57,6 +57,7 @@ export class NavigationComponent implements OnInit {
         this.router.navigate(['']);
         sport = "футбол";
         title = "ТИНЬКОФФ РОССИЙСКАЯ ПРЕМЬЕР-ЛИГА 2021-22";
+        titleDownTable = "authors";
         break;
 
       case "authorization":

@@ -19,6 +19,8 @@ export class PageMainComponent implements OnInit {
   public titleUpTable: string = "";
   public titleDownTable: string = "";
 
+  public isAuthors: boolean = false;
+
   constructor(private httpService: HttpService) { }
 
   ngOnInit(): void {
@@ -134,12 +136,48 @@ export class PageMainComponent implements OnInit {
       });
   }
 
-  onChangeSport(args: string[]): void {
-    this.title = args[1];
-    this.titleUpTable = args[2];
-    this.titleDownTable = args[3];
+  getAllAuthors(): void {
+    this.httpService.getAllAuthors().subscribe(
+      (data: any) => {
+        this.articles = [];
 
-    this.getConcreateTeams(args[0]);
-    this.getArticlesSports(args[0]);
+        data.forEach((i: any) => this.articles.push(
+          {
+            id: i.id,
+            image: i.image,
+            header: i.name,
+            shortText: i.shortDescription,
+            text: "",
+            author: "",
+            date: "",
+            sport: ""
+          }
+        ));
+      },
+      (error) => {
+        alert(error.message);
+        console.log(error)
+      });
+  }
+
+  onChangeSport(args: string[]): void {
+    if (args[3] !== "authors") {
+      this.title = args[1];
+      this.titleUpTable = args[2];
+      this.titleDownTable = args[3];
+      this.isAuthors = false;
+
+      this.getConcreateTeams(args[0]);
+      this.getArticlesSports(args[0]);
+    }
+    else {
+      this.title = args[1];
+      this.titleUpTable = "";
+      this.titleDownTable = "";
+      this.isAuthors = true;
+
+      this.getAllAuthors();
+      this.getConcreateTeams(args[0]);
+    }
   }
 }
