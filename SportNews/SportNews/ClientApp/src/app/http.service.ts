@@ -6,14 +6,18 @@ import { environment } from "../environments/environment";
 @Injectable()
 export class HttpService {
 
-  constructor(private http: HttpClient) { }
+  private today: number;
+
+  constructor(private http: HttpClient) {
+    this.today = new Date().getTime();
+  }
 
   getArticles() {
     return this.http.get("/api/article");
   }
 
   getSportArticles(typeSport: string) {
-    return this.http.get("/api/article/sport=" + typeSport);
+    return this.http.get("/api/article/sport=" + typeSport + "&Date=" + this.today + "&Author=&Search=");
   }
 
   getConcreateArticle(id: string) {

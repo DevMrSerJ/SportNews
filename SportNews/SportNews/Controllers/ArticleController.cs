@@ -89,8 +89,11 @@ namespace SportNews.Controllers
 		/// </summary>
 		/// <param name="typeSport">Name type sport.</param>
 		/// <returns>List articles.</returns>
-		[HttpGet("Sport={TypeSport}")]
-		public IEnumerable<object> Get([FromRoute(Name = "TypeSport")] string typeSport)
+		[HttpGet("Sport={TypeSport}&Date={Date}&Author={Author}&Search={Search}")]
+		public IEnumerable<object> Get([FromRoute(Name = "TypeSport")] string typeSport,
+										[FromRoute(Name = "Date")] long date,
+										[FromRoute(Name = "Author")] string name,
+										[FromRoute(Name = "Search")] string search)
 		{
 			try
 			{
@@ -99,7 +102,10 @@ namespace SportNews.Controllers
 					var articles = (from article in db.Article
 								 join user in db.User on article.AuthorId equals user.Id
 								 join sport in db.TypeSport on article.TypeSportId equals sport.Id
-								 where sport.Name.ToLower().IndexOf(typeSport.ToLower()) != -1
+								 where sport.Name.ToLower().IndexOf(typeSport.ToLower()) != -1 &&
+										article.DatePublish == new DateTime(date) &&
+										name.Contains(user.Name) &&
+										(article.Header.Contains(search) || article.Text.Contains(search))
 								 select new
 								 {
 									 Id = article.Id,
