@@ -1,33 +1,39 @@
-<div class="arcticles">
+<div *ngIf="isClub" class="arcticles">
   <div class="articleAuthorBlock">
     <div class="imageAuthor">
-      <img src="{{ teams[0].image }}" class="mainPhotoAuthor">
+      <img src="{{ team?.image }}" class="mainPhotoAuthor">
     </div>
     <div class="textArticle">
       <h1 class="headArticle">
-        {{ teams[0].name }}
+        {{ team?.name }}
       </h1>
       <p class="bodyArticle">
-        {{ teams[0].fullName }}
+        {{ team?.fullName }}
       </p>
     </div>
   </div>
 
   <div class="arcticles">
     <div class="concreteArticle">
-      {{ teams[0].description }}
-      <p class="textArticle">
-        ПФК ЦСКА был основан в 1911 году, как футбольная секция Общества любителей лыжного спорта(ОЛЛС).В 1923 году лыжную станцию, как и саму секцию передали армии в целях «практического исследования различных видов спорта, гимнастики и подвижных игр в качестве средств физической подготовки воина».Команда стала называться ОППВ(Опытно- показательная площадка Всевобуча).А 23 февраля 1928 года к 10 - й годовщине Красной Армии был создан Центральный Дом Красной Армии и знаменитая в будущем футбольная команда ЦДКА.За свою вековую истории ОЛЛС - ОППВ - ЦДКА - ЦДСА - ЦСКА становился чемпионом Москвы, СССР и новой России.А в 2005 - м году стал первым российским клубом, выигравшим европейский турнир – Кубок УЕФА." +
-        </p>
-      <p class="textArticle">
-        Главные награды:
-      </p>
-      <ul class= "textArticle" >
-        <li class="textArticle">Победитель кубка УЕФА 2004 - 2005 </li>
-        <li class="textArticle" > Победитель чемпионата 2015 - 2016 </li>
-        <li class="textArticle" > Победитель Суперкубка 2018 </li>
-        <li class="textArticle" > 1 / 4 финала Лиги чемпионов 2009 - 2010 </li>
-       </ul>
+      {{ team?.description }}
     </div>
   </div>
+</div>
+
+<div *ngIf="!isClub" class="arcticles">
+  <div class="articleAuthorBlock">
+    <div class="imageAuthor">
+      <img src="{{ user?.image }}" class="mainPhotoAuthor">
+    </div>
+    <div class="textArticle">
+      <h1 class="headArticle">
+        {{ user?.name }}
+      </h1>
+      <p class="bodyArticle">
+        {{ user?.shortDescription }}
+      </p>
+    </div>
+  </div>
+
+  <div [innerHTML]="user?.fullDescription"></div>
 </div>

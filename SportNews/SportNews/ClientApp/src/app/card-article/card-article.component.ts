@@ -36,4 +36,13 @@ export class CardArticleComponent implements OnInit {
     });
   }
 
+  onClickReferenseAuthor(id: string): void {
+    this.router.navigateByUrl('/club', {
+      state: {
+        id: id,
+        isClub: false
+      }
+    });
+  }
+
 }

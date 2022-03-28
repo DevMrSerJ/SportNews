@@ -6,12 +6,13 @@
   </div>
 
   <div class="filter">
-    <span>Выберите автора</span>
-    <select class="author" id="author">
-      <option value="Pushkin">Пушкин</option>
-      <option value="Lermontov">Лермонтов</option>
-      <option value="Bubnov">Бубнов</option>
-    </select>
+    <form [formGroup]="authorForm">
+      <span>Выберите автора</span>
+      <select class="author" id="author" formControlName="author">
+        <option [ngValue]=""></option>
+        <option *ngFor="let option of allAuthors" [ngValue]="option">{{ option }}</option>
+      </select>
+    </form>
   </div>
 
   <div class="filter">

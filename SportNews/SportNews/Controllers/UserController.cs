@@ -49,7 +49,7 @@ namespace SportNews.Controllers
 		/// </summary>
 		/// <param name="id">Id author.</param>
 		/// <returns>IEnumerable info about authors.</returns>
-		[HttpGet("Id")]
+		[HttpGet("{Id}")]
 		public IEnumerable<object> Get([FromRoute(Name = "Id")] Guid id)
 		{
 			try
@@ -61,7 +61,7 @@ namespace SportNews.Controllers
 								 select new
 								 {
 									 Id = user.Id,
-									 Name = $"{user.Surname} {user.Name}. {user.Patronymic}.",
+									 Name = $"{user.Surname} {user.Name} {user.Patronymic}",
 									 ShortDescription = user.ShortDescription,
 									 FullDescription = user.FullDescription,
 									 Image = user.ImageUrl

@@ -31,4 +31,8 @@ export class HttpService {
   getAllAuthors() {
     return this.http.get("/api/user");
   }
+
+  getConcreateAuthors(id: string) {
+    return this.http.get("/api/user/" + id);
+  }
 }
