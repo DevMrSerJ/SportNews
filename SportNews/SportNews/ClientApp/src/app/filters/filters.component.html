@@ -2,7 +2,9 @@
 
   <div class="filter">
     <span>Дата публикации</span>
-    <input class="filterDate" id="filterDate" type="date">
+    <form [formGroup]="registerForm">
+      <input class="filterDate" id="filterDate" type="date" [ngModel]="selectDate | date:'yyyy-MM-dd'"  formControlName="selectDate" (ngModelChange)="editDate($event)">
+    </form>
   </div>
 
   <div class="filter">
@@ -16,8 +18,10 @@
   </div>
 
   <div class="filter">
-    <input class="search" id="search" type="text">
-    <button>Поиск</button>
+    <form [formGroup]="searchForm">
+      <input class="search" id="search" type="text" formControlName="searchValue" #searchValue>
+      <button (click)="searchWords(searchValue.value)">Поиск</button>
+    </form>
   </div>
 
 </div>

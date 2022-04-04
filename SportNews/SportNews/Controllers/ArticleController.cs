@@ -95,6 +95,38 @@ namespace SportNews.Controllers
 										[FromRoute(Name = "Author")] string name,
 										[FromRoute(Name = "Search")] string search)
 		{
+			var isName = false;
+			var isSport = false;
+			var isDate = false;
+			var dateTime = new DateTime(1970, 1, 1, 0, 0, 0, 0);
+			DateTime currentDate = new DateTime(0);
+
+			if (typeSport == "null")
+			{
+				typeSport = "";
+				isSport = true;
+			}
+
+			if (name == "null")
+			{
+				name = "";
+				isName = true;
+			}
+
+			if (date != 0)
+			{
+				currentDate = dateTime.AddSeconds(date);
+			}
+			else
+			{
+				isDate = true;
+			}
+
+			if (search == "null")
+			{
+				search = " ";
+			}
+
 			try
 			{
 				using (SportNewsContext db = new SportNewsContext())
@@ -102,10 +134,10 @@ namespace SportNews.Controllers
 					var articles = (from article in db.Article
 								 join user in db.User on article.AuthorId equals user.Id
 								 join sport in db.TypeSport on article.TypeSportId equals sport.Id
-								 where sport.Name.ToLower().IndexOf(typeSport.ToLower()) != -1 &&
-										article.DatePublish == new DateTime(date) &&
-										name.Contains(user.Name) &&
-										(article.Header.Contains(search) || article.Text.Contains(search))
+								 where (sport.Name.ToLower().IndexOf(typeSport.ToLower()) != -1 || isSport) &&
+									(article.DatePublish == currentDate || isDate) &&
+									(user.Surname == name || isName) &&
+									(article.Header.Contains(search) || article.Text.Contains(search))
 								 select new
 								 {
 									 Id = article.Id,

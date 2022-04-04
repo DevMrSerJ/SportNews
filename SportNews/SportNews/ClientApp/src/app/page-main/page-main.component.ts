@@ -15,6 +15,11 @@ export class PageMainComponent implements OnInit {
   public teamUpTable: Team[] = [];
   public teamDownTable: Team[] = [];
 
+  private filterDate: string = "";
+  private filterAuthor: string = "";
+  private filterSearch: string = "";
+  private filterSport: string = "null";
+
   public title: string = "";
   public titleUpTable: string = "";
   public titleDownTable: string = "";
@@ -52,8 +57,8 @@ export class PageMainComponent implements OnInit {
       });
   }
 
-  getArticlesSports(typeSport: string): void {
-    this.httpService.getSportArticles(typeSport).subscribe(
+  getArticlesSports(typeSport: string, date: string, author: string, search: string): void {
+    this.httpService.getSportArticles(typeSport, date, author, search).subscribe(
       (data: any) => {
         this.articles = [];
 
@@ -162,13 +167,15 @@ export class PageMainComponent implements OnInit {
 
   onChangeSport(args: string[]): void {
     if (args[3] !== "authors") {
+      this.filterSport = args[0];
+
       this.title = args[1];
       this.titleUpTable = args[2];
       this.titleDownTable = args[3];
       this.isAuthors = false;
 
       this.getConcreateTeams(args[0]);
-      this.getArticlesSports(args[0]);
+      this.getArticlesSports(this.filterSport, this.filterDate, this.filterAuthor, this.filterSearch);
     }
     else {
       this.title = args[1];
@@ -179,5 +186,12 @@ export class PageMainComponent implements OnInit {
       this.getAllAuthors();
       this.getConcreateTeams(args[0]);
     }
+  }
+
+  onChangeFilter(args: string[]): void {
+    this.filterDate = args[0];
+    this.filterAuthor = args[1];
+    this.filterSearch = args[2];
+    this.getArticlesSports(this.filterSport, this.filterDate, this.filterAuthor, this.filterSearch);
   }
 }

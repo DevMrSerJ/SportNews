@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { HttpService } from '../http.service';
 import { FormGroup, FormBuilder } from '@angular/forms';
 
@@ -8,8 +8,19 @@ import { FormGroup, FormBuilder } from '@angular/forms';
   styleUrls: ['./filters.component.css']
 })
 export class FiltersComponent implements OnInit {
-  public allAuthors: string[] = [];
+
+  @Output() filterClick = new EventEmitter<string[]>();
+
   public authorForm!: FormGroup;
+  public registerForm!: FormGroup;
+  public searchForm!: FormGroup;
+
+  public allAuthors: string[] = [];
+  public selectDate: Date = new Date();
+
+  private author: string = "null";
+  private date: string = "0";
+  private search: string = "null";
 
   constructor(private httpService: HttpService, private fb: FormBuilder) { }
 
@@ -23,7 +34,16 @@ export class FiltersComponent implements OnInit {
     this.authorForm.get("author")?.valueChanges
       .subscribe(f => {
         this.onAuthorChanged(f);
-      })
+      });
+
+    this.selectDate = new Date();
+    this.registerForm = this.fb.group({
+      selectDate: ''
+    });
+
+    this.searchForm = this.fb.group({
+      searchValue: ""
+    });
   }
 
   getAllAuthors() {
@@ -33,11 +53,43 @@ export class FiltersComponent implements OnInit {
       },
       (error) => {
         alert(error.message);
-        console.log(error)
+        console.log(error);
       });
   }
 
   onAuthorChanged(value: string) {
-    // proccess change
+    this.author = value;
+
+    if (value === "") {
+      this.author = "null";
+    }
+
+    let args = [this.date, this.author, this.search];
+
+    this.filterClick.emit(args);
+  }
+
+  editDate(value: any) {
+    let dateTime = 0;
+
+    if (value) {
+      dateTime = new Date(value).getTime() / 1000;
+    }
+
+    this.date = `${dateTime}`;
+
+    let args = [this.date, this.author, this.search];
+
+    this.filterClick.emit(args);
+  }
+
+  searchWords(value: string) {
+    console.log(value);
+
+    this.search = value;
+
+    let args = [this.date, this.author, this.search];
+
+    this.filterClick.emit(args);
   }
 }
