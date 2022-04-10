@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { environment } from "../environments/environment";
 
@@ -35,5 +35,24 @@ export class HttpService {
 
   getConcreateAuthors(id: string) {
     return this.http.get("/api/user/" + id);
+  }
+
+  sendAuthorization(login: string, body: any) {
+    const contentType = new HttpHeaders().set(
+      'Content-Type',
+      'application/json'
+    )
+
+    return this.http.post(
+      "/api/user/authorization/" + login,
+      body,
+      {
+        headers: contentType
+      }
+    );
+  }
+
+  sendRegistration(body: any) {
+    return this.http.post("/api/user/registration", body);
   }
 }

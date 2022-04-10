@@ -66,5 +66,15 @@ namespace SportNews.Model
 		/// Type sport which user like.
 		/// </summary>
 		public Guid TypeSportId { get; set; }
+
+		/// <summary>
+		/// Password.
+		/// </summary>
+		public string Password { get; set; }
+
+		/// <summary>
+		/// Login.
+		/// </summary>
+		public string Login { get; set; }
 	}
 }

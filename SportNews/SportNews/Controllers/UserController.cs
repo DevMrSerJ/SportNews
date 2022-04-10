@@ -75,5 +75,94 @@ namespace SportNews.Controllers
 				throw new Exception(ex.Message);
 			}
 		}
+
+		/// <summary>
+		/// Post request for registration users to system.
+		/// </summary>
+		/// <param name="user">User for registrtion.</param>
+		/// <returns>Result of registrtion.</returns>
+		[HttpPost("registration")]
+		public ActionResult Post([FromBody] User user)
+		{
+			if (user == null)
+			{
+				return BadRequest();
+			}
+
+			try
+			{
+				using (SportNewsContext db = new SportNewsContext())
+				{
+					var idUser = Guid.NewGuid();
+					var registrationUser = new User
+					{
+						Id = idUser,
+						TypeSportId = new Guid("C378FDDF-3052-4473-A392-A0684892DB82"),
+						Gender = user.Gender,
+						Mobile = user.Mobile,
+						Email = user.Email,
+						Login = user.Login,
+						Password = user.Password
+					};
+					db.User.Add(registrationUser);
+
+					db.SaveChanges();
+
+					return Ok();
+				}
+			}
+			catch (Exception ex)
+			{
+				throw new Exception(ex.Message);
+			}
+		}
+
+		/// <summary>
+		/// Post request for authorization with login and password.
+		/// </summary>
+		/// <param name="password">Password users.</param>
+		/// <param name="login">Login users.</param>
+		/// <returns>Result of authorization.</returns>
+		[HttpPost("authorization/{Login}")]
+		public object Post([FromBody] string password, [FromRoute(Name = "Login")] string login)
+		{
+			if (string.IsNullOrEmpty(password) || string.IsNullOrEmpty(login))
+			{
+				return new 
+				{ 
+					success = false,
+					message = "Пароль или логин оказались пустыми. Попробуйте снова"
+				};
+			}
+
+			try
+			{
+				using (SportNewsContext db = new SportNewsContext())
+				{
+					var auth = (from user in db.User
+								 where user.Login == login && user.Password == password
+								 select true).ToList();
+
+					if (auth.Count > 0)
+					{
+						return new
+						{
+							success = true,
+							message = "Авторизация прошла успешно"
+						};
+					}
+
+					return new 
+					{ 
+						success = false,
+						message = "Пользователя с таким логином и паролем не существует"
+					};
+				}
+			}
+			catch (Exception ex)
+			{
+				throw new Exception(ex.Message);
+			}
+		}
 	}
 }

@@ -2,80 +2,85 @@
 
 <main class="main">
   <div class="authenticationBlock">
-    <div *ngIf="true">
+    <div *ngIf="!isAuth">
       <p class="registLabel">РЕГИСТРАЦИЯ</p>
       <img src="../../assets/images/favicon.png" class="registImg">
 
-      <form id="FormRegist" class="auth">
+      <form id="FormRegist" class="auth" [formGroup]="registrationForm" (ngSubmit)="onRegist()">
         <p>
           <label>Логин:</label>
-          <input id="login" required type="text" name="username" class="placeholder" placeholder="admin">
+          <input id="login" required type="text" name="username" class="placeholder" placeholder="admin" formControlName="login">
         </p>
-        <p id="descLog1" class="descriptionLabel">
+        <p id="descLog1" class="descriptionLabel" [style.color]="isErrorLogin?'red':'rgba(22, 120, 0, 0.99)'">
           В логине могут быть только латинские буквы и цифры.
         </p>
-        <p id="descLog2" class="descriptionLabel">
+        <p id="descLog2" class="descriptionLabel" [style.color]="isErrorLogin?'red':'rgba(22, 120, 0, 0.99)'">
           Длина логина не менее 6 символов.
         </p>
         <p class="lineInput">
           <label>Пароль:</label>
-          <input id="passFirst" type="password" required name="password" class="placeholder">
+          <input id="passFirst" type="password" required name="password" class="placeholder" formControlName="firstPassword">
         </p>
-        <p id="descPass1" class="descriptionLabel">
+        <p id="descPass1" class="descriptionLabel" [style.color]="isErrorFirstPassword?'red':'rgba(22, 120, 0, 0.99)'">
           Длина пароля не менее 6 символов.
         </p>
-        <p id="descPass2" class="descriptionLabel">
+        <p id="descPass2" class="descriptionLabel" [style.color]="isErrorFirstPassword?'red':'rgba(22, 120, 0, 0.99)'">
           В пароле должны быть цифры, буквы нижнего и верхнего регистра и спец символы.
         </p>
         <p class="lineInput">
           <label>Повторите пароль:</label>
-          <input id="passSecond" type="password" required name="password" class="placeholder">
+          <input id="passSecond" type="password" required name="password" class="placeholder" formControlName="secondPassword">
         </p>
-
-        <p id="descPass" class="descriptionLabel">
+        <p id="descPass" class="descriptionLabel" [style.color]="isErrorSecondPassword?'red':'rgba(22, 120, 0, 0.99)'">
           Пароли должны совпадать.
         </p>
         <p class="lineInput">
           <label>Выберите пол:</label>
-          <input type="radio" name="password" class="placeholder">МУЖ
-          <input type="radio" name="password" class="placeholder">ЖЕН
+          <input type="radio" class="placeholder" value="true" name="gender" formControlName="gender">МУЖ
+          <input type="radio" class="placeholder" value="false" name="gender" formControlName="gender">ЖЕН
         </p>
         <p class="lineInput">
           <label>Введите телефон:</label>
-          <input id="mobile" type="text" required name="password" class="placeholder" placeholder="+79112223333">
+          <input id="mobile" type="text" required name="password" class="placeholder" placeholder="+79112223333" formControlName="mobile">
         </p>
-        <p id="descMobile" class="descriptionLabel">
+        <p id="descMobile" class="descriptionLabel" [style.color]="isErrorMobile?'red':'rgba(22, 120, 0, 0.99)'">
           Телефон должен быть в формате +7000000000.
         </p>
         <p class="lineInput">
           <label>Введите email:</label>
-          <input id="email" type="text" required name="password" class="placeholder" placeholder="admin@example.com">
+          <input id="email" type="text" required name="password" class="placeholder" placeholder="admin@example.com" formControlName="email">
         </p>
         <p class="lineInput">
-          <label id="labelCaptcha">Сколько будет </label>
-          <input id="captchaValue" type="number" required name="password" class="placeholder">
+          <label id="labelCaptcha">Сколько будет {{ this.firstNumber }} + {{ this.secondNumber }}</label>
+          <input id="captchaValue" type="number" required name="password" class="placeholder" formControlName="numberCaptcha">
         </p>
         <p class="lineInput">
-          <button class="buttonRegistr" onclick="onRegist(); return false;">ЗАРЕГИСТРИРОВАТЬСЯ</button>
+          <button class="buttonRegistr">ЗАРЕГИСТРИРОВАТЬСЯ</button>
+        </p>
+        <p class="lineInput">
+          <span>Вы уже зарегистрированы? Тогда <a (click)="isAuth = true">войдите</a> в систему.</span>
         </p>
       </form>
     </div>
 
-    <div *ngIf="false">
+    <div *ngIf="isAuth">
       <p class="authLabel">АВТОРИЗАЦИЯ</p>
       <img src="../../assets/images/favicon.png" class="authImg">
 
-      <form id="FormAuth" class="auth">
+      <form id="FormAuth" class="auth" [formGroup]="authForm" (ngSubmit)="onAuth()">
         <p>
           <label>Логин:</label>
-          <input id="login" required type="text" name="username" class="placeholder" placeholder="admin">
+          <input id="login" required type="text" name="username" class="placeholder" placeholder="admin" formControlName="login">
         </p>
         <p class="lineInput">
           <label>Пароль:</label>
-          <input id="passFirst" type="password" required name="password" class="placeholder">
+          <input id="passFirst" type="password" required name="password" class="placeholder" formControlName="password">
         </p>
         <p class="lineInput">
-          <button class="buttonAuth" onclick="onRegist(); return false;">ВОЙТИ</button>
+          <button class="buttonAuth">ВОЙТИ</button>
+        </p>
+        <p class="lineInput">
+          <span>У вас нет аккаунта? Тогда <a (click)="isAuth = false">зарегистрируйтесь</a>.</span>
         </p>
       </form>
     </div>

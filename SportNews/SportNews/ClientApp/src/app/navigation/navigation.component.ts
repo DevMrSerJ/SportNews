@@ -71,9 +71,11 @@ export class NavigationComponent implements OnInit {
         break;
     }
 
-    let args = [sport, title, titleUpTable, titleDownTable];
+    if (name !== "authorization") {
+      let args = [sport, title, titleUpTable, titleDownTable];
 
-    this.sportClick.emit(args);
+      this.sportClick.emit(args);
+    }
   }
 
   clearActiveStyle() {
