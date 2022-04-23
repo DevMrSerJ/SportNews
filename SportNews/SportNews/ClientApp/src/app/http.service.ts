@@ -37,6 +37,10 @@ export class HttpService {
     return this.http.get("/api/user/" + id);
   }
 
+  getConcreateClubs(id: string) {
+    return this.http.get("/api/team/" + id);
+  }
+
   sendAuthorization(login: string, body: any) {
     const contentType = new HttpHeaders().set(
       'Content-Type',

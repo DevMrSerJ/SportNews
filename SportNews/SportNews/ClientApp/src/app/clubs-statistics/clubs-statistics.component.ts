@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 export interface Team {
   id: string;
@@ -29,9 +30,18 @@ export class ClubsStatisticsComponent implements OnInit {
   @Input()
   public statisticsInfo: ClubStatisticsInfo | undefined;
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
+  }
+
+  onClickReferense(id: string): void {
+    this.router.navigateByUrl('/club', {
+      state: {
+        id: id,
+        isClub: true
+      }
+    });
   }
 
 }

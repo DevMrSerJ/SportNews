@@ -14,7 +14,9 @@
     <tr *ngFor="let card of statisticsInfo?.teamsUp">
       <td>{{ card?.position }}</td>
       <td>
-        <a href="/club">{{ card?.name }}</a>
+        <a (click)="onClickReferense(card.id)">
+          {{ card?.name }}
+        </a>
       </td>
       <td>{{ card?.score }}</td>
     </tr>
@@ -36,7 +38,9 @@
     <tr *ngFor="let card of statisticsInfo?.teamsDown">
       <td>{{ card?.position }}</td>
       <td>
-        <a href="/club">{{ card?.name }}</a>
+        <a (click)="onClickReferense(card.id)">
+          {{ card?.name }}
+        </a>
       </td>
       <td>{{ card?.score }}</td>
     </tr>
