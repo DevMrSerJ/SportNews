@@ -10,6 +10,14 @@ export interface Team {
   score: number;
 }
 
+export interface ClubStatisticsInfo {
+  teamsUp: Team[],
+  teamsDown: Team[],
+  title: string,
+  titleUpTable: string,
+  titleDownTable: string
+}
+
 @Component({
   selector: 'app-clubs-statistics',
   templateUrl: './clubs-statistics.component.html',
@@ -19,19 +27,7 @@ export interface Team {
 export class ClubsStatisticsComponent implements OnInit {
 
   @Input()
-  public teamsUp: Team[] = [];
-
-  @Input()
-  public teamsDown: Team[] = [];
-
-  @Input()
-  public title: string = "";
-
-  @Input()
-  public titleUpTable: string = "";
-
-  @Input()
-  public titleDownTable: string = "";
+  public statisticsInfo: ClubStatisticsInfo | undefined;
 
   constructor() { }
 

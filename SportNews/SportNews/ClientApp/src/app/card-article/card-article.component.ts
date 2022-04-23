@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ClubStatisticsInfo } from '../clubs-statistics/clubs-statistics.component';
 
 export interface Article {
   id: string;
@@ -21,6 +22,7 @@ export class CardArticleComponent implements OnInit {
 
   @Input() public articles: Article[] = [];
   @Input() public author: boolean = false;
+  @Input() public clubStatistic: ClubStatisticsInfo | undefined;
 
   constructor(private router: Router) { }
 
@@ -31,7 +33,8 @@ export class CardArticleComponent implements OnInit {
   onClickReferense(id: string): void {
     this.router.navigateByUrl('/article', {
       state: {
-        id: id
+        id: id,
+        clubStatistic: this.clubStatistic
       }
     });
   }
@@ -40,7 +43,8 @@ export class CardArticleComponent implements OnInit {
     this.router.navigateByUrl('/club', {
       state: {
         id: id,
-        isClub: false
+        isClub: false,
+        clubStatistic: this.clubStatistic
       }
     });
   }

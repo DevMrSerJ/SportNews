@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Article } from '../card-article/card-article.component';
+import { ClubStatisticsInfo } from '../clubs-statistics/clubs-statistics.component';
 import { HttpService } from '../http.service';
 
 @Component({
@@ -12,9 +13,11 @@ export class PageArticleComponent implements OnInit {
 
   public id = "";
   public article: Article | undefined;
+  public statisticsInfo: ClubStatisticsInfo | undefined;
 
   constructor(router: Router, private httpService: HttpService) {
     this.id = router.getCurrentNavigation()?.extras?.state?.['id'];
+    this.statisticsInfo = router.getCurrentNavigation()?.extras?.state?.['clubStatistic'];
   }
 
   ngOnInit(): void {

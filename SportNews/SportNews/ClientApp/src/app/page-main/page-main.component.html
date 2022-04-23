@@ -3,8 +3,8 @@
 
 <main class="main">
   <div class="content">
-    <app-card-article [articles]="articles" [author]="isAuthors"></app-card-article>
-    <app-clubs-statistics [teamsUp]="teamUpTable" [teamsDown]="teamDownTable" [title]="title" [titleUpTable]="titleUpTable" [titleDownTable]="titleDownTable"></app-clubs-statistics>
+    <app-card-article [articles]="articles" [author]="isAuthors" [clubStatistic]="getClubStatisticsInfo()"></app-card-article>
+    <app-clubs-statistics [statisticsInfo]="getClubStatisticsInfo()"></app-clubs-statistics>
   </div>
 </main>
 

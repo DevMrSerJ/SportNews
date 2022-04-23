@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Article } from '../card-article/card-article.component';
-import { Team } from '../clubs-statistics/clubs-statistics.component';
+import { ClubStatisticsInfo, Team } from '../clubs-statistics/clubs-statistics.component';
 import { HttpService } from '../http.service';
 
 @Component({
@@ -33,6 +33,16 @@ export class PageMainComponent implements OnInit {
     this.getMainTeams();
 
     this.title = "ТИНЬКОФФ РОССИЙСКАЯ ПРЕМЬЕР-ЛИГА 2021-22";
+  }
+
+  getClubStatisticsInfo(): ClubStatisticsInfo {
+    return {
+      "teamsUp": this.teamUpTable,
+      "teamsDown": this.teamDownTable,
+      "title": this.title,
+      "titleUpTable": this.titleUpTable,
+      "titleDownTable": this.titleDownTable
+    }
   }
 
   getAllArticles(): void {

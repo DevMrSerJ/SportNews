@@ -2,8 +2,8 @@
 
   <table border="1" cellspacing="0">
     <caption class="descriptionTable">
-      {{ title }}
-      <p *ngIf="titleUpTable">{{ titleUpTable }}</p>
+      {{ statisticsInfo?.title }}
+      <p *ngIf="statisticsInfo?.titleUpTable">{{ statisticsInfo?.titleUpTable }}</p>
     </caption>
     <tr>
       <th>Позиция</th>
@@ -11,7 +11,7 @@
       <th>Очки</th>
     </tr>
     <tr>
-    <tr *ngFor="let card of teamsUp">
+    <tr *ngFor="let card of statisticsInfo?.teamsUp">
       <td>{{ card?.position }}</td>
       <td>
         <a href="/club">{{ card?.name }}</a>
@@ -23,9 +23,9 @@
   <br>
   <br>
 
-  <table *ngIf="titleDownTable" border="1" cellspacing="0">
+  <table *ngIf="statisticsInfo?.titleDownTable" border="1" cellspacing="0">
     <caption class="descriptionTable">
-      {{ titleDownTable }}
+      {{statisticsInfo?. titleDownTable }}
     </caption>
     <tr>
       <th>Позиция</th>
@@ -33,7 +33,7 @@
       <th>Очки</th>
     </tr>
     <tr>
-    <tr *ngFor="let card of teamsDown">
+    <tr *ngFor="let card of statisticsInfo?.teamsDown">
       <td>{{ card?.position }}</td>
       <td>
         <a href="/club">{{ card?.name }}</a>
