@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { Routes, RouterModule } from '@angular/router';
 import { HttpClientModule } from "@angular/common/http";
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { Guid } from 'js-guid';
 
 import { AppComponent } from './app.component';
 import { HttpService } from "./http.service";
@@ -21,6 +22,7 @@ import { CardArticleComponent } from './card-article/card-article.component';
 
 import { FooterComponent } from './footer/footer.component';
 import { AboutClubComponent } from './about-club/about-club.component';
+import { currentUser } from '../environments/environment';
 
 const appRoutes: Routes = [
   { path: '', component: PageMainComponent },
@@ -55,4 +57,4 @@ const appRoutes: Routes = [
   providers: [HttpService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

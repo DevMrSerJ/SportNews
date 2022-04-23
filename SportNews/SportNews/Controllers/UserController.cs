@@ -141,14 +141,14 @@ namespace SportNews.Controllers
 				{
 					var auth = (from user in db.User
 								 where user.Login == login && user.Password == password
-								 select true).ToList();
+								 select user.Id).ToList();
 
 					if (auth.Count > 0)
 					{
 						return new
 						{
 							success = true,
-							message = "Авторизация прошла успешно"
+							message = auth.First()
 						};
 					}
 

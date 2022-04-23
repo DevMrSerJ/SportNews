@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Guid } from 'js-guid';
+import { currentUser } from '../../environments/environment';
 import { HttpService } from '../http.service';
 
 @Component({
@@ -158,6 +159,14 @@ export class PageAuthorizationComponent implements OnInit {
       this.httpService.sendAuthorization(auth.login, response).subscribe(
         (data: any) => {
           alert("Вы авторизовались!");
+
+          let currentUser = {
+            "name": auth.login,
+            "id": data.message,
+            "isAuthentication": true
+          }
+
+          localStorage.setItem('currentUser', JSON.stringify(currentUser));
         },
         (error) => {
           alert(error.message);
@@ -171,6 +180,7 @@ export class PageAuthorizationComponent implements OnInit {
     this.httpService.sendRegistration(body).subscribe(
       (data: any) => {
         alert("Вы зарегистрировались!");
+        this.isAuth = true;
       },
       (error) => {
         alert(error.message);

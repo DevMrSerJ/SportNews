@@ -1,5 +1,6 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { Router } from '@angular/router';
+import { Guid } from 'js-guid';
 
 @Component({
   selector: 'app-navigation',
@@ -16,9 +17,24 @@ export class NavigationComponent implements OnInit {
   private activeAuthors: string = "";
   private activeAuthorization: string = "";
 
-  constructor(private router: Router) { }
+  private nameButtonSignIn: string = "";
+  
+  constructor(private router: Router) {}
 
   ngOnInit(): void {
+    try {
+      let user = localStorage.getItem('currentUser');
+
+      if (user !== null) {
+        this.nameButtonSignIn = JSON.parse(user)?.name;
+      }
+      else {
+        this.nameButtonSignIn = "Войти";
+      }
+
+    } catch (e) {
+      this.nameButtonSignIn = "Войти";
+    }
   }
 
   onClickNavigation(name: string): void {
@@ -63,6 +79,12 @@ export class NavigationComponent implements OnInit {
       case "authorization":
         this.activeAuthorization = "active";
         this.router.navigate(['authorization']);
+
+        if (this.nameButtonSignIn !== "Войти") {
+          localStorage.removeItem('currentUser');
+          this.nameButtonSignIn = "Войти";
+        }
+
         break;
 
       default:
@@ -104,5 +126,14 @@ export class NavigationComponent implements OnInit {
 
   public ActiveAuthorization() {
     return this.activeAuthorization;
+  }
+
+  public getNameSignIn(): string {
+   /* this.nameButtonSignIn = (currentUser.isAuthentication)
+      ? currentUser.name
+      : "Войти";*/
+
+    return this.nameButtonSignIn;
+    //return "Войти";
   }
 }
