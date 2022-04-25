@@ -33,7 +33,8 @@ namespace SportNews.Controllers
 								 select new
 								 {
 									 Id = comment.Id,
-									 User = $"{user.Surname} {user.Name[0]}. {user.Patronymic[0]}.",
+									 UserId = comment.UserId,
+									 User = user.Login,
 									 Commentary = comment.Commentary,
 									 DatePublish = comment.DatePublish
 								 }).ToList();
@@ -56,7 +57,7 @@ namespace SportNews.Controllers
 		[HttpPost("{Id}")]
 		public ActionResult Post([FromRoute(Name = "Id")] Guid id, [FromBody] string commentText)
 		{
-			if (string.IsNullOrEmpty(commentText))
+			if (string.IsNullOrEmpty(commentText) || id == Guid.Empty)
 			{
 				return BadRequest();
 			}
@@ -79,6 +80,38 @@ namespace SportNews.Controllers
 					oldComment.Commentary = commentText;
 
 					db.Commentary.Update(oldComment);
+
+					db.SaveChanges();
+
+					return Ok();
+				}
+			}
+			catch (Exception ex)
+			{
+				throw new Exception(ex.Message);
+			}
+		}
+
+		/// <summary>
+		/// Post request for create commentary.
+		/// </summary>
+		/// <param name="comment">Commentary.</param>
+		/// <returns>Result of create.</returns>
+		[HttpPost("create")]
+		public ActionResult Post([FromBody] Commentarys comment)
+		{
+			if (comment == null || comment.ArticleId == Guid.Empty || comment.UserId == Guid.Empty)
+			{
+				return BadRequest();
+			}
+
+			try
+			{
+				using (SportNewsContext db = new SportNewsContext())
+				{
+					var idComment = Guid.NewGuid();
+					comment.Id = idComment;
+					db.Commentary.Add(comment);
 
 					db.SaveChanges();
 

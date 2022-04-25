@@ -59,4 +59,23 @@ export class HttpService {
   sendRegistration(body: any) {
     return this.http.post("/api/user/registration", body);
   }
+
+  getAllCommentsForArticle(id: string) {
+    return this.http.get("/api/commentary/" + id);
+  }
+
+  updateComment(id: string, body: any) {
+    const contentType = new HttpHeaders().set(
+      'Content-Type',
+      'application/json'
+    )
+
+    return this.http.post(
+      "/api/commentary/" + id,
+      body,
+      {
+        headers: contentType
+      }
+    );
+  }
 }
