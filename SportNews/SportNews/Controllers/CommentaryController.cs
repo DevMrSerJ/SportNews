@@ -17,6 +17,7 @@ namespace SportNews.Controllers
 		/// <summary>
 		/// Get commentarys for specific articles.
 		/// </summary>
+		/// <param name="id">Id article.</param>
 		/// <returns>List commentarys.</returns>
 		[HttpGet("{Id}")]
 		public IEnumerable<object> Get([FromRoute(Name = "Id")] Guid id)
@@ -38,6 +39,50 @@ namespace SportNews.Controllers
 								 }).ToList();
 
 					return users;
+				}
+			}
+			catch (Exception ex)
+			{
+				throw new Exception(ex.Message);
+			}
+		}
+
+		/// <summary>
+		/// Post request for update text commentary.
+		/// </summary>
+		/// <param name="id">Id commentary.</param>
+		/// <param name="commentText">Commentary text.</param>
+		/// <returns>Result of update.</returns>
+		[HttpPost("{Id}")]
+		public ActionResult Post([FromRoute(Name = "Id")] Guid id, [FromBody] string commentText)
+		{
+			if (string.IsNullOrEmpty(commentText))
+			{
+				return BadRequest();
+			}
+
+			try
+			{
+				using (SportNewsContext db = new SportNewsContext())
+				{
+					var oldComment = (from comm in db.Commentary
+									  where comm.Id == id
+									  select new Commentarys
+									  {
+										  Id = comm.Id,
+										  UserId = comm.UserId,
+										  Commentary = comm.Commentary,
+										  ArticleId = comm.ArticleId,
+										  DatePublish = comm.DatePublish
+									  }).ToList().First();
+
+					oldComment.Commentary = commentText;
+
+					db.Commentary.Update(oldComment);
+
+					db.SaveChanges();
+
+					return Ok();
 				}
 			}
 			catch (Exception ex)
