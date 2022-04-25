@@ -1,0 +1,31 @@
+.container-commentary {
+  margin-top: 2%;
+}
+
+.user-commentary {
+  resize: none;
+  margin-top: 1%;
+  width: 100%;
+  height: 100%;
+}
+
+.author-commentary {
+  display: flex;
+  justify-content: space-between;
+}
+
+.icon-edit-comment {
+  position: relative;
+  height: 36px;
+}
+
+.block-edit {
+  background: #b0b0b0a8;
+  position: relative;
+  top: -38px;
+  height: 36px;
+}
+
+.icon-edit {
+  text-align: center;
+}

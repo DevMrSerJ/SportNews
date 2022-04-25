@@ -22,7 +22,9 @@ import { CardArticleComponent } from './card-article/card-article.component';
 
 import { FooterComponent } from './footer/footer.component';
 import { AboutClubComponent } from './about-club/about-club.component';
-import { currentUser } from '../environments/environment';
+import { CommentaryGroupComponent } from './commentary-group/commentary-group.component';
+import { UserCommentaryComponent } from './user-commentary/user-commentary.component';
+import { WriteCommentaryComponent } from './write-commentary/write-commentary.component';
 
 const appRoutes: Routes = [
   { path: '', component: PageMainComponent },
@@ -45,7 +47,10 @@ const appRoutes: Routes = [
     PageAuthorizationComponent,
     FiltersComponent,
     PageClubComponent,
-    AboutClubComponent
+    AboutClubComponent,
+    CommentaryGroupComponent,
+    UserCommentaryComponent,
+    WriteCommentaryComponent
   ],
   imports: [
     BrowserModule,

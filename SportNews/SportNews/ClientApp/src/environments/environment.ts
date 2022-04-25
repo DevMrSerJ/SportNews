@@ -5,12 +5,3 @@
 export const environment = {
   production: false
 };
-
-/**
- * Перменная для хранения данных о текущем пользователе.
-*/
-export var currentUser: {
-  id: string,
-  name: string,
-  isAuthentication: boolean
-}

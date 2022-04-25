@@ -3,7 +3,7 @@
 // `ng build` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.currentUser = exports.environment = void 0;
+exports.environment = void 0;
 exports.environment = {
     production: false
 };

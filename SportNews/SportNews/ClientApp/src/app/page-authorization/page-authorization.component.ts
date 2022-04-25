@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Guid } from 'js-guid';
-import { currentUser } from '../../environments/environment';
 import { HttpService } from '../http.service';
 
 @Component({

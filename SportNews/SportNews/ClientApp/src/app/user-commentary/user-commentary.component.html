@@ -1,0 +1,14 @@
+<div class="container-commentary">
+  <div class="author-commentary">
+    <div>Serj</div>
+    <div>23.04.2022</div>
+  </div>
+  <div (mouseenter)="setIsHover(true)">
+    <p><textarea class="user-commentary" [disabled]="readonly" #textarea>here is commentary's</textarea></p>
+    <div *ngIf="getIsHover() && getIsNotEdit()" class="block-edit" (click)="onClick()" (mouseleave)="setIsHover(false)">
+      <p class="icon-edit"><img class="icon-edit-comment" src="../../assets/images/editIcon.png"></p>
+    </div>
+
+    <button *ngIf="getVisibleSaveButton()" (click)="onClickSaveComment()">Сохранить</button>
+  </div>
+</div>

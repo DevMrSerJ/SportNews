@@ -1,0 +1,9 @@
+textarea {
+  resize: none;
+  width: 100%;
+  height: 75%;
+}
+
+.main-container {
+  height: 105px;
+}
