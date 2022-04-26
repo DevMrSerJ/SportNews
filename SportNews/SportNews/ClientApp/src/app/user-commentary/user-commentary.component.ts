@@ -58,12 +58,14 @@ export class UserCommentaryComponent implements OnInit {
       return;
     }
 
-    this.setIsHover(id, true);
-    this.setIsNotEdit(id, true);
-    this.setVisibleSaveButton(id, false);
+    text = "\"" + text + "\"";
 
     this.httpService.updateComment(id, text).subscribe(
       (data: any) => {
+        this.isHover = false;
+        this.isNotEdit = false;
+        this.visibleSaveButton = false;
+        this.readonly = true;
       },
       (error) => {
         alert(error.message);

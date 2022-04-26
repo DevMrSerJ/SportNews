@@ -15,6 +15,12 @@ export class CommentaryGroupComponent implements OnInit {
   constructor(private httpService: HttpService) { }
 
   ngOnInit(): void {
+    this.getComments();
+  }
+
+  getComments(): void {
+    this.comments = [];
+
     if (!this.id) {
       return;
     }

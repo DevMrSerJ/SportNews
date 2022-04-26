@@ -1,5 +1,5 @@
 <div class="container-group">
-  <app-write-commentary></app-write-commentary>
+  <app-write-commentary [articleId]="id" (createCommentary)="getComments()"></app-write-commentary>
   <div class="container-user-commenatry">
     <app-user-commentary [idArticle]="id" [commentarys]="comments"></app-user-commentary>
   </div>

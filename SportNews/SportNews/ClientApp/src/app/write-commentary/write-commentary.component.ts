@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { HttpService } from '../http.service';
+import { Guid } from 'js-guid';
 
 @Component({
   selector: 'app-write-commentary',
@@ -7,15 +9,52 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WriteCommentaryComponent implements OnInit {
 
-  public textCommentary: string = "";
+  @Input() public articleId: string | undefined;
 
-  constructor() { }
+  @Output() createCommentary = new EventEmitter<void>();
+
+  public textCommentary: string = "";
+  private userId: string = "";
+
+  constructor(private httpService: HttpService) { }
 
   ngOnInit(): void {
+    try {
+      let user = localStorage.getItem('currentUser');
+
+      if (user !== null) {
+        this.userId = JSON.parse(user)?.id;
+      }
+      else {
+        this.userId = "";
+      }
+
+    } catch (e) {
+      console.error(e);
+    }
   }
 
   onClick(text: string): void {
-    console.log(text);
+    if (!this.articleId) {
+      return;
+    }
+
+    let comment = {
+      id: Guid.EMPTY,
+      userId: this.userId,
+      commentary: text,
+      articleId: this.articleId,
+      datePublish: new Date()
+    }
+
+    this.httpService.createComment(comment).subscribe(
+      (data: any) => {
+        this.createCommentary.emit();
+      },
+      (error) => {
+        alert(error.message);
+        console.log(error);
+      });
   }
 
 }

@@ -78,4 +78,8 @@ export class HttpService {
       }
     );
   }
+
+  createComment(body: any) {
+    return this.http.post("/api/commentary/create", body);
+  }
 }

@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Protocols;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,6 +28,8 @@ namespace SportNews.Model
 		{
 			if (!optionsBuilder.IsConfigured)
 			{
+				//var connection = ConfigurationManager<string>.ConnectionStrings["MyConnectionString"].ConnectionString;
+
 				optionsBuilder.UseSqlServer(@"Server=SERJ-DEV\DEV;Database=SportNews;Trusted_Connection=True;");
 			}
 		}
